@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule
+  xmlns:http="http://www.mulesoft.org/schema/mule/http"
+  xmlns="http://www.mulesoft.org/schema/mule/core"
+  xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+  <flow name="template-rest-api-listener" doc:id="d1c701df-3fea-4ca7-a610-f0063e8ee792" >
+    <http:listener doc:name="Template Listener" doc:id="deb7ed61-cbb7-47d8-b789-cc0c3d130aa2" config-ref="HTTP_Listener_config" path="${api.path}"/>
+  </flow>
+</mule>

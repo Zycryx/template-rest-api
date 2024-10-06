@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule
+  xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+  xmlns:http="http://www.mulesoft.org/schema/mule/http"
+  xmlns="http://www.mulesoft.org/schema/mule/core"
+  xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+  <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8e3903af-98f8-4d26-94b3-b079b4b4b8f8" basePath="${api.basePath}" >
+    <http:listener-connection host="0.0.0.0" port="${api.port}" readTimeout="${api.timeout}" />
+  </http:listener-config>
+  <http:request-config name="Core_Client_HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="63d15cef-dcec-4b1c-a455-2e85094a83f0" basePath="/${clients.core.basePath}" >
+    <http:request-connection protocol="${clients.core.protocol}" host="${clients.core.host}" port="${clients.core.port}" >
+      <tls:context >
+        <tls:trust-store insecure="true" />
+      </tls:context>
+    </http:request-connection>
+  </http:request-config>
+  <error-handler name="Global_Error_Handler" doc:id="2fa20bc4-a703-45a7-a586-895b780c39d2" >
+  </error-handler>
+</mule>

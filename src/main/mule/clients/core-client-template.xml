@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule
+  xmlns:http="http://www.mulesoft.org/schema/mule/http"
+  xmlns="http://www.mulesoft.org/schema/mule/core"
+  xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+  <sub-flow name="core-client-legacy-service-template" doc:id="195d2fee-cfb7-45ee-b058-dcb5f4578a96" >
+    <try doc:name="Try" doc:id="12e7f43b-b3b4-4fa6-8ad3-3f6e048d19f3" >
+      <http:request method="GET" doc:name="Template Client Request" doc:id="c3d984db-89ac-49f9-b9ed-4252f27fd930" config-ref="Core_Client_HTTP_Request_configuration" path="/${clients.core.service.example.path}"/>
+      <error-handler >
+        <on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="644bd9e1-38c5-4714-99cb-7141c1314619" >
+          <raise-error doc:name="Raise error" doc:id="f8238df5-49b0-4027-95bb-fc7b0bfbee79" type="CORE_CLIENT:SERVICE_UNAVAILABLE" description="${error.client.serviceUnavailable}"/>
+        </on-error-propagate>
+      </error-handler>
+    </try>
+  </sub-flow>
+</mule>
